@@ -1,0 +1,61 @@
+<div class="container mt-4">
+    <h4 class="my-4">Formularios <small>Template</small></h4>
+    <form autocomplete="off" (ngSubmit)="guardar(formulario)" #formulario = "ngForm">
+        <div class="form-group row">
+          <label class="col-2 col-form-label">Nombre</label>
+          <div class="col-8">
+            <input type="text" 
+                required
+                minlength="7"
+                name="nombre"
+                class="form-control is-invalid"
+                [class.is-invalid]="nombre.invalid && nombre.touched" 
+                placeholder="Nombre"
+                [ngModel]="usuario.nombre"
+                #nombre="ngModel">
+                <small class="text-danger" *ngIf="nombre.invalid && nombre.touched">Ingresa un nombre con un minimo de 7 caracteres</small>
+          </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Apellido</label>
+            <div class="col-8">
+              <input type="text" 
+                    required
+                    minlength="10"
+                    name="apellidos"
+                  class="form-control is-invalid"
+                  [class.is-invalid]="apellido.invalid && apellido.touched" 
+                  placeholder="Apellido"
+                  [ngModel]="usuario.apellido"                
+                  #apellido="ngModel">
+                  <small class="text-danger" *ngIf="apellido.invalid && apellido.touched">Ingresa sus apellidos con un minimo de 10 caracteres</small>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-2 col-form-label">Email</label>
+            <div class="col-8">
+              <input type="email" 
+                    required
+                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                    name="email"
+                  class="form-control is-invalid"
+                  [class.is-invalid]="email.invalid && email.touched" 
+                  placeholder="@email"
+                  [ngModel]="usuario.email"                
+                  #email="ngModel">
+                  <small class="text-danger" *ngIf="email.invalid && email.touched">Ingresa un correo electrónico válido</small>
+            </div>
+          </div>
+
+                
+
+        <div class="form-group row">
+          <div class="offset-2 col-8">
+            <button type="submit" class="btn btn-outline-primary btn-block">GUARDAR</button>
+          </div>
+        </div>
+      </form>
+
+</div>

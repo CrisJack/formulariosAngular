@@ -1,0 +1,54 @@
+<p>reactive works!</p>
+<div class="container">
+    <h4 class="my-5">Formularios <small>Reactivo</small></h4>
+    <form autocomplete="off" [formGroup]="formulario" (ngSubmit)="guardar()">
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Nombre</label>
+            <div class="col-8">
+                <input type="text" class="form-control" placeholder="Nombre"
+                formControlName="nombre"
+                name="nombre"
+                [class.is-invalid]="validaciones('nombre')">
+                <small class="text-danger" *ngIf="validaciones('nombre')">Ingresa un nombre con un minimo de 7 caracteres</small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Apellido</label>
+            <div class="col-8">
+                <input type="text" class="form-control" placeholder="Apellido"
+                formControlName="apellido"
+                [class.is-invalid]="validaciones('apellido')">
+                <small class="text-danger" *ngIf="validaciones('apellido')">Ingresa un nombre con un minimo de 10 caracteres</small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Correo</label>
+            <div class="col-8">
+                <input type="email" class="form-control" placeholder="Correo"
+                formControlName="correo"
+                [class.is-invalid]="validaciones('correo')">
+                <small class="text-danger" *ngIf="validaciones('correo')">Ingresa un correo valido</small>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="offset-2 col-8">
+              <button type="submit" class="btn btn-outline-primary btn-block">GUARDAR</button>
+            </div>
+          </div>
+    </form>
+
+    <hr>
+
+    <div class="container">
+
+        <pre>
+            Estado del formulario <b>{{formulario.valid}}</b>
+        </pre>
+        <pre>
+            Estado del formulario <b>{{formulario.value | json}}</b>
+        </pre>
+    </div>
+</div>
